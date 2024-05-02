@@ -1,4 +1,4 @@
-foobar:~/please-pass-the-coded-messages dheerajkumarbahalan$ cat readme.txt
+foobar:~/please-pass-the-coded-messages cat readme.txt
 Please Pass the Coded Messages
 ==============================
 You need to pass a message to the bunny workers, but to avoid detection, the code you agreed to use is... obscure, to say the least. The bunnies are given food on standard-issue plates that are stamped with the numbers 0-9 for easier sorting, and you need to combine sets of plates to create the numbers in the code. The signal that a number is part of the code is that it is divisible by 3. You can do smaller numbers like 15 and 45 easily, but bigger numbers like 144 and 414 are a little trickier. Write a program to help yourself quickly create large numbers for use in the code, given a limited number of plates to work with.

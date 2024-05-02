@@ -1,0 +1,125 @@
+MAP=[0,0,0,0,0]
+def get_neighbours(arr,idx):
+    left=0
+    right=0
+    if (idx==0):
+        left = None
+    else:
+        left = idx-1    
+    if (idx==(len(arr)-1)):
+        right = None 
+    else:
+        right = idx+1
+    return left,right  
+
+
+def as_candy(ratings):
+
+    fin=[1] * len(ratings)
+
+    for i in range(0,len(ratings)):
+        left,right = get_neighbours(ratings,i)
+
+        if(left is None):
+            if(ratings[right]>=ratings[i]):
+                fin[right]=fin[i]+1
+            else:
+                if(fin[right]>1):
+                    fin[right]=fin[right]-1
+                else:
+                    fin[i]=fin[i]+1   
+        elif(right is None):
+            if(ratings[left]>=ratings[i]):
+                fin[left]=fin[i]+1
+            else:
+                if(fin[left]>1):
+                    fin[left]=fin[left]-1
+                else:
+                    fin[i]=fin[i]+1 
+        else:
+            if(ratings[left]>ratings[i]):
+                fin[left]=fin[i]+1
+            else:
+                if(fin[left]>1):
+                    fin[left]=fin[left]-1
+                else:
+                    fin[i]=fin[i]+1     
+            if(ratings[right]>ratings[i]):
+                fin[right]=fin[i]+1
+            else:
+                if(fin[right]>1):
+                    fin[right]=fin[right]-1
+                else:
+                    fin[i]=fin[i]+1 
+    print(fin)                            
+    return(sum(fin))                    
+print(as_candy([1,2,87,87,87,2,1]))       
+
+
+
+
+
+
+          
+def assign_candies(ratings):
+    for i in range(0,len(ratings)):
+        left,right = get_neighbours(ratings,i)
+        print(left,right)
+        
+        if(left is None and right is None):
+            return 1
+
+        if(left is None):
+            if(ratings[right]>ratings[i]):
+                if(ratings[i] in MAP):
+                    MAP[ratings[right]]=MAP[ratings[i]]+1
+                else:
+                    MAP[ratings[i]]=1
+                    MAP[ratings[right]]=2
+            else:
+                if(ratings[i] in MAP):
+                    MAP[ratings[right]]=MAP[ratings[i]]-1
+                else:
+                    MAP[ratings[i]]=2
+                    MAP[ratings[right]]=1
+                MAP[ratings[right]]=ratings[MAP[ratings[i]]]-1
+            continue    
+        if(right is None):
+            print("right is none")
+            if(ratings[left]>ratings[i]):
+                if(ratings[i] in MAP):
+                    MAP[ratings[left]]=MAP[ratings[i]]+1
+                else:
+                    MAP[ratings[i]]=1
+                    MAP[ratings[left]]=2
+            else:
+                if(ratings[i] in MAP):
+                    MAP[ratings[left]]=MAP[ratings[i]]-1
+                else:
+                    MAP[ratings[i]]=2
+                    MAP[ratings[left]]=1
+            continue        
+        if(ratings[left]>=ratings[i]):
+                if(ratings[left] in MAP):
+                    MAP[ratings[i]]=MAP[ratings[left]]+1
+                else:
+                    MAP[ratings[i]]=1
+                    MAP[ratings[left]]=2
+        if(ratings[right]>=ratings[i]):
+                if(ratings[i] in MAP):
+                    MAP[ratings[right]]=MAP[ratings[i]]-1
+                else:
+                    MAP[ratings[i]]=2
+                    MAP[ratings[right]]=1  
+
+# assign_candies([1,2,2])
+
+# print(MAP)
+                   
+
+
+
+
+
+
+

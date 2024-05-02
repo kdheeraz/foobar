@@ -1,0 +1,12 @@
+{
+    "blocks":{
+        "start_blocks":["audeience","social_post","trigger"],
+        "action_blocks":["add_to_contact","fb_ad",
+        "mobile_app_notification",
+    "notification","push_external_app","remove_contact_from_last",
+"send_email","send_sms","update_contact_details","update_cutom_details",
+"variant_testing","web_push_notification","whatsapp"],
+        "flow_control_blocks":["dicision_split","random_split","wait","wait_untill"],
+        "exit_blocks":["exit_criteria","exit_journey","re_entry_criteria"]
+    }
+}
